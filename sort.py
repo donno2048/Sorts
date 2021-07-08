@@ -30,3 +30,22 @@ def bitonicSort(l):
             j //= 2
         k *= 2
     return l[gap:]
+# The next sorting algorithm actually needs some imports
+# This is a sorting algorithm in o(n) complexity
+# I will run for ints *and* floats (I know count sort is possible but this is for floats too)
+# I know it's impossible, but it is
+# It is my own invention...
+from threading import Thread
+from time import sleep
+o = []
+def threadsort(l):
+    global o
+    o = []
+    max_value = max(l)
+    def insert(element):
+        global o
+        sleep(element / max_value)
+        o.append(element)
+    for item in l: Thread(target=insert, args=(item,)).start()
+    sleep(1)
+    return o
